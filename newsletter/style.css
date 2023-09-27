@@ -1,0 +1,79 @@
+body {
+  background-color: rgb(186, 202, 241);
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+main {
+  position: relative;
+  border-radius: 1rem;
+  background-color: rgb(68, 66, 73);
+  text-align: center;
+  margin: 5rem auto 5rem;
+  padding: 1rem;
+  width: 25rem;
+}
+
+label {
+  position: absolute;
+  border: solid;
+  aspect-ratio: 1;
+  border-radius: 5rem;
+  color: rgb(17, 139, 232);
+  font-size: 5rem;
+  top: -3.5rem;
+}
+
+.exit {
+  position: relative;
+  border-radius: 1rem;
+  aspect-ratio: 1;
+  border: solid;
+  background-color: transparent;
+  color: rgb(74, 88, 120);
+  right: -12rem;
+  top: -0.5rem;
+}
+
+h1 {
+  color: rgb(17, 139, 232);
+  font-weight: lighter;
+  margin-top: 3rem;
+}
+
+.sub-p {
+  color: white;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  font-style: normal;
+}
+
+input {
+  border-radius: 0.3rem;
+  border: transparent;
+  width: 15rem;
+  height: 2rem;
+}
+
+input::placeholder {
+  font-size: small;
+  padding: 0.3rem;
+  color: rgb(192, 188, 188);
+}
+
+button {
+  border-radius: 0.3rem;
+  border: transparent;
+  height: 2rem;
+  display: inline-block;
+  font-size: small;
+  background-color: rgb(60, 139, 235);
+  color: white;
+}
+
+p {
+  color: rgba(192, 188, 188, 50%);
+  font-size: small;
+  font-style: italic;
+}
