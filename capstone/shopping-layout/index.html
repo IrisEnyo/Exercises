@@ -21,33 +21,48 @@
   <body class="shopping-layout">
     <article class="asics">
       <header class="header-asics">
-        <section class="img">
-          <!--<img
-            class="img-asics"
+        <section class="section-img">
+          <img
+            class="img-asics-shoes"
             src="https://images.unsplash.com/photo-1560072810-1cffb09faf0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
             alt="One pair of blue Asics Shoes"
-          />-->
+          />
           <aside class="shipping">Free Shipping!</aside>
           <aside class="photo">Photo by: Maksim Larin</aside>
         </section>
       </header>
-      <main>
-        <h1>Asics</h1>
-        <p>
+      <main class="main-asics">
+        <h1 class="main-h1">Asics</h1>
+        <p class="main-p">
           Suede fabric pointed toe stylish cut front low heel sharp on-trend toe
           point raised heel drop sides unique silhouette. Bow detail metallic
           eyelets leather lining luxurious finish classic courts formal
           slingback square...
         </p>
       </main>
-      <footer>
-        <p>$65 USD</p>
-        Size:
-        <select name="size-selector" id="size"></select>
-        Quantity:
-        <select name="quantity-selector" id="quantity"></select>
-        <p>Color:</p>
-        <button>Add to Cart</button>
+      <footer class="footer-asics">
+        <p class="prize">$65 USD</p>
+        <section class="size">
+          Size:
+          <select class="size-selector" name="size-selector" id="size">
+            <option value="6">6</option>
+          </select>
+        </section>
+        <section class="quantity">
+          Quantity:
+          <select
+            class="quantity-selector"
+            name="quantity-selector"
+            id="quantity"
+          >
+            <option value="1">1</option>
+          </select>
+        </section>
+        <section class="color">
+          Color: <button class="blue"></button> <button class="red"></button>
+          <button class="black"></button>
+        </section>
+        <button class="add-cart">Add to Cart</button>
       </footer>
     </article>
     <article class="adidas">
