@@ -14,29 +14,39 @@
 
 .shopping-layout {
   display: flex;
-  flex-direction: row;
-  background-color: rgb(234, 233, 233);
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  --background-color: rgb(234, 233, 233);
+  --color: grey;
+  --white: white;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 650px) {
   .shopping-layout {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-start;
   }
 }
 
 body > article {
   margin: 1.3rem;
   border-radius: 1rem;
+  max-width: 45ch;
 }
 
-.article-asics {
+.article-asics,
+.article-adidas,
+.article-new-balance {
   border: 0.1rem;
-  background-color: white;
+  background-color: var(--white);
 }
 
 /* header */
 
-.header-asics {
+.header-asics,
+.header-adidas,
+.header-new-balance {
   border-radius: 0.5rem;
 }
 
@@ -44,7 +54,7 @@ body > article {
   position: relative;
 }
 
-.cover {
+.img-cover {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -55,15 +65,19 @@ body > article {
   );
 }
 
-.img-asics-shoes {
+.img-asics-shoes,
+.img-adidas-shoes,
+.img-new-balance-shoes {
   width: 100%;
+  height: 100%;
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.shipping {
+.shipping,
+.one-left {
   position: absolute;
   z-index: 0;
-  background-color: rgb(234, 233, 233);
+  background-color: var(--background-color);
   opacity: 80%;
   border-radius: 0.3rem;
   padding: 0.4rem;
@@ -72,9 +86,11 @@ body > article {
   font-size: 0.8rem;
 }
 
-.photo-asics {
+.photo-asics,
+.photo-adidas,
+.photo-new-balance {
   position: absolute;
-  color: gray;
+  color: var(--color);
   font-size: 0.6rem;
   margin-left: 1rem;
   bottom: 2rem;
@@ -82,38 +98,54 @@ body > article {
 
 /* main */
 
-.main-asics {
+.main-asics,
+.main-adidas,
+.main-new-balance {
   margin: 0.5rem;
   padding-bottom: 1rem;
 }
 
-.main-p {
-  color: gray;
+.main-h1-asics,
+.main-h1-adidas,
+.main-h1-new-balance {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.main-p-asics,
+.main-p-adidas,
+.main-p-new-balance {
+  color: var(--color);
   line-height: 1.5;
 }
 
 /* footer */
 
-.footer-asics {
-  margin: 0.5rem;
-  background-color: rgb(234, 233, 233);
-  display: grid;
-  grid-template-columns: 1fr;
+.footer-asics,
+.footer-adidas,
+.footer-new-balance {
+  background-color: var(--background-color);
   border-radius: 0.5rem;
+  display: flow-root;
+  position: relative;
+  padding: 1rem;
 }
 
-.prize {
+.prize-asics,
+.prize-adidas,
+.prize-new-balance {
   text-align: center;
-  margin: 1rem;
-  padding: 0.3rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
   border-radius: 0.3rem;
-  background-color: white;
+  background-color: var(--white);
 }
 
 .size,
 .quantity {
   margin: 0 1rem;
-  color: gray;
+  color: var(--color);
+  display: inline-block;
 }
 
 .size-selector,
@@ -125,13 +157,19 @@ body > article {
   border-color: lightgrey;
 }
 
-.color button {
-  margin: 0 0.2rem;
+.color-asics,
+.color-adidas,
+.color-new-balance {
+  margin: 1rem;
+  color: var(--color);
+  display: grid;
+  grid-template-columns: 0.2fr 0.12fr 0.12fr 0;
+  align-items: center;
+  justify-items: start;
 }
 
-.color {
-  margin: 1rem;
-  color: gray;
+.color button {
+  margin: 0 0.2rem;
 }
 
 .blue {
@@ -158,11 +196,60 @@ body > article {
   border: none;
 }
 
-.add-cart {
-  background-color: blue;
+/* color-adidas */
+
+.green-black {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5rem;
+  background-image: linear-gradient(olive 50%, black 50%);
   border: none;
-  color: white;
-  margin: 1rem;
+  rotate: 270deg;
+}
+
+.blue-black {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5rem;
+  background-image: linear-gradient(rgb(48, 148, 235) 50%, black 50%);
+  border: none;
+  rotate: 270deg;
+}
+
+.pink-black {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5rem;
+  background-image: linear-gradient(hotpink 50%, black 50%);
+  border: none;
+  rotate: 270deg;
+}
+
+/* color-new-balance */
+
+.red-white {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5rem;
+  background-image: linear-gradient(red 50%, var(--white) 50%);
+  border: none;
+  rotate: 270deg;
+}
+
+.black-white {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5rem;
+  background-image: linear-gradient(black 50%, var(--white) 50%);
+  border: none;
+  rotate: 270deg;
+}
+
+.add-cart {
+  width: 100%;
+  background-color: rgb(71, 97, 245);
+  border: none;
+  color: var(--white);
   padding: 0.5rem;
   border-radius: 0.3rem;
 }
