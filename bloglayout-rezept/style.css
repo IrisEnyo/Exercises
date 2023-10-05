@@ -19,6 +19,24 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+@media screen and (min-width: 650px) {
+  main {
+    margin: 0 5rem;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  main {
+    margin: 0 10rem;
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  main {
+    margin: 0 20rem;
+  }
+}
+
 /*----- header -----*/
 
 .header {
