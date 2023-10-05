@@ -1,0 +1,85 @@
+/*---------- General Styling ----------*/
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --headerbg-color: hotpink;
+  --logo-item-color: #08d493;
+  --nav-font-color: #00704c;
+  --article-background-color: aliceblue;
+}
+
+/*---------- Special Styling ----------*/
+
+/*----- body -----*/
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*----- header -----*/
+
+.header {
+  background-color: var(--headerbg-color);
+  padding-top: 20px;
+}
+
+.header__logo-item {
+  font-weight: bolder;
+  color: var(--logo-item-color);
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 0;
+}
+
+.header__nav,
+.header__logo {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.header__nav-list {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0 0 0 0;
+  padding: 0;
+}
+
+.header__nav-link {
+  background-color: var(--logo-item-color);
+  color: var(--nav-font-color);
+  padding: 10px;
+  border-radius: 3px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/*----- main -----*/
+
+.main {
+  padding: 1rem 0.5rem;
+}
+
+/* section top rezepte */
+
+.top-recipe__hl {
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.top-recipe__article {
+  background-color: aliceblue;
+  padding: 0.5rem;
+  border-radius: 3px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.img-responsive {
+  width: 100%;
+}
+
+/* section letzte rezepte */
