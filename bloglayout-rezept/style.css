@@ -19,24 +19,6 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-@media screen and (min-width: 650px) {
-  main {
-    margin: 0 5rem;
-  }
-}
-
-@media screen and (min-width: 850px) {
-  main {
-    margin: 0 10rem;
-  }
-}
-
-@media screen and (min-width: 1150px) {
-  main {
-    margin: 0 20rem;
-  }
-}
-
 /*----- header -----*/
 
 .header {
@@ -82,11 +64,30 @@ body {
   padding: 1rem 0.5rem;
 }
 
+@media screen and (min-width: 650px) {
+  main {
+    margin: 0 5rem;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  main {
+    margin: 0 10rem;
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  main {
+    margin: 0 20rem;
+  }
+}
+
 /* section top rezepte */
 
 .top-recipe__hl {
   font-size: 1.7rem;
   text-align: center;
+  margin: 4rem 0 2rem 0;
 }
 
 .top-recipe__article {
@@ -94,6 +95,9 @@ body {
   padding: 0.5rem;
   border-radius: 3px;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+:hover {
 }
 
 .img-responsive {
