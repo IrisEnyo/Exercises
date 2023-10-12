@@ -8,6 +8,12 @@
   padding: 0;
 }
 
+:root {
+  --background-color: rgb(234, 233, 233);
+  --color: grey;
+  --white: white;
+}
+
 /* --------------------Spezific Styling------------------- */
 
 /* body */
@@ -252,3 +258,5 @@ body > article {
   padding: 0.5rem;
   border-radius: 0.3rem;
 }
+
+/* --------------- END --------------- */
