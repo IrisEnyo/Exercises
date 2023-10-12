@@ -13,9 +13,6 @@
 /* body */
 
 .shopping-layout {
-  --background-color: rgb(234, 233, 233);
-  --color: grey;
-  --white: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
