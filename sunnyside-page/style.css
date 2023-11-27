@@ -40,7 +40,8 @@ h1 {
   background-position: center;
   background-size: cover;
 
-  min-height: 50rem;
+  min-height: 100vh;
+  min-width: 47rem;
   padding: 2rem;
 
   display: grid;
@@ -125,4 +126,27 @@ img {
   font-family: fraunes;
   font-size: 1rem;
   text-transform: uppercase;
+}
+
+.graphic-design {
+  background-image: url("/sunnyside-agency-landing-page-main Kopie/images/desktop/image-graphic-design.jpg");
+  background-position: center;
+  background-size: cover;
+  max-width: 100%;
+  min-height: 30rem;
+}
+
+.photography {
+  background-image: url("/sunnyside-agency-landing-page-main Kopie/images/desktop/image-photography.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+h4 {
+  grid-column: 1 / -1;
 }
