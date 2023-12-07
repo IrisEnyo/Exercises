@@ -1,0 +1,262 @@
+/* --------------------General Styling-------------------- */
+
+* {
+  box-sizing: border-box;
+  font-family: quicksand, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --background-color: rgb(234, 233, 233);
+  --color: grey;
+  --white: white;
+}
+
+/* --------------------Spezific Styling------------------- */
+
+/* body */
+
+.shopping-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background-color);
+}
+
+@media screen and (min-width: 650px) {
+  .shopping-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+body > article {
+  margin: 1.3rem;
+  border-radius: 1rem;
+  max-width: 45ch;
+}
+
+.article-asics,
+.article-adidas,
+.article-new-balance {
+  border: 0.1rem;
+  background-color: var(--white);
+}
+
+/* header */
+
+.header-asics,
+.header-adidas,
+.header-new-balance {
+  border-radius: 0.5rem;
+}
+
+.section-img {
+  position: relative;
+}
+
+.img-cover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 1%,
+    rgba(255, 255, 255, 0) 60%
+  );
+}
+
+.img-asics-shoes,
+.img-adidas-shoes,
+.img-new-balance-shoes {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.shipping,
+.one-left {
+  position: absolute;
+  z-index: 0;
+  background-color: var(--background-color);
+  opacity: 80%;
+  border-radius: 0.3rem;
+  padding: 0.4rem;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.photo-asics,
+.photo-adidas,
+.photo-new-balance {
+  position: absolute;
+  color: var(--color);
+  font-size: 0.6rem;
+  margin-left: 0.5rem;
+  bottom: 2rem;
+}
+
+/* main */
+
+.main-asics,
+.main-adidas,
+.main-new-balance {
+  margin: 1rem;
+  padding-bottom: 1rem;
+}
+
+.main-h1-asics,
+.main-h1-adidas,
+.main-h1-new-balance {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.main-p-asics,
+.main-p-adidas,
+.main-p-new-balance {
+  color: var(--color);
+  line-height: 1.5;
+}
+
+/* footer */
+
+.footer-asics,
+.footer-adidas,
+.footer-new-balance {
+  background-color: var(--background-color);
+  border-radius: 0.5rem;
+  display: flow-root;
+  position: relative;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.prize-asics,
+.prize-adidas,
+.prize-new-balance {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: var(--white);
+}
+
+.size,
+.quantity {
+  margin: 0 1rem;
+  color: var(--color);
+  display: inline-block;
+}
+
+.size-selector,
+.quantity-selector {
+  width: 3.5rem;
+  padding: 0.1rem;
+  margin-left: 0.5rem;
+  border-radius: 0.3rem;
+  border-color: lightgrey;
+}
+
+.color-asics,
+.color-adidas,
+.color-new-balance {
+  margin: 1rem;
+  color: var(--color);
+  display: grid;
+  grid-template-columns: 0.2fr 0.12fr 0.12fr 0;
+  align-items: center;
+  justify-items: start;
+}
+
+.color button {
+  margin: 0 0.2rem;
+}
+
+.blue {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5rem;
+  background-color: blue;
+  border: none;
+}
+
+.red {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5rem;
+  background-color: red;
+  border: none;
+}
+
+.black {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5rem;
+  background-color: black;
+  border: none;
+}
+
+/* color-adidas */
+
+.green-black {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5rem;
+  background-image: linear-gradient(olive 50%, black 50%);
+  border: none;
+  rotate: 270deg;
+}
+
+.blue-black {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5rem;
+  background-image: linear-gradient(rgb(48, 148, 235) 50%, black 50%);
+  border: none;
+  rotate: 270deg;
+}
+
+.pink-black {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5rem;
+  background-image: linear-gradient(hotpink 50%, black 50%);
+  border: none;
+  rotate: 270deg;
+}
+
+/* color-new-balance */
+
+.red-white {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5rem;
+  background-image: linear-gradient(red 50%, var(--white) 50%);
+  border: none;
+  rotate: 270deg;
+}
+
+.black-white {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5rem;
+  background-image: linear-gradient(black 50%, var(--white) 50%);
+  border: none;
+  rotate: 270deg;
+}
+
+.add-cart {
+  width: 100%;
+  background-color: rgb(71, 97, 245);
+  border: none;
+  color: var(--white);
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
+
+/* --------------- END --------------- */
