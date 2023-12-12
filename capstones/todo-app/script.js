@@ -12,11 +12,6 @@ if (todos.length === 0) {
   todos.push({ id: 1, description: "Set your priority!", done: false });
 }
 
-// Function to update local storage
-function updateLocalStorage() {
-  localStorage.setItem("todos", JSON.stringify(todos));
-}
-
 // Function to render todos
 function renderTodos() {
   const selectedFilter = document.querySelector(
@@ -24,6 +19,7 @@ function renderTodos() {
   ).value;
 
   todoList.innerHTML = "";
+
   for (const todo of todos) {
     if (
       (selectedFilter === "done" && todo.done) ||
@@ -73,6 +69,11 @@ function addTodo() {
   renderTodos();
 
   inputTodo.value = "";
+}
+
+// Function to update local storage
+function updateLocalStorage() {
+  localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 addForm.addEventListener("submit", function (event) {
