@@ -1,143 +1,224 @@
-const remove = document.getElementById("remove");
-const addForm = document.getElementById("add-form");
-const inputTodo = document.getElementById("input-todo");
-const todoList = document.getElementById("todo-list");
 const filterSection = document.getElementById("filter-section");
+const remove = document.getElementById("remove");
+const inputTodo = document.getElementById("input-todo");
+const addForm = document.getElementById("add-form");
+const todoList = document.getElementById("todo-list");
 
-const todos = [
-  {
-    id: 0,
-    description: "Learn CSS",
-    isDone: false,
-  },
-  {
-    id: 1,
-    description: "Learn HTML",
-    isDone: true,
-  },
-  {
-    id: 1,
-    description: "Learn JS",
-    isDone: false,
-  },
-];
+// The State
+const state = {
+  currentFilter: "all",
+  todos: [],
+};
 
-function saveTodoItems() {
-  localStorage.setItem("todos", JSON.stringify(todos));
+// Default Todo
+if (state.task === 0) {
+  const defaultTodo = {
+    id: 1,
+    description: "Set your priorities!",
+    done: false,
+  };
+  state.task.push(defaultTodo);
+  saveTodosToLocalStorage();
 }
 
-// render
-function renderTodos() {
-  todoList.innerHTML = "";
+// Save/update Todos to local storage
+function saveTodosToLocalStorage() {
+  localStorage.setItem("todos", JSON.stringify(state.todos));
+}
 
-  for (const todo of todoList) {
-    const li = document.createElement("li");
-
-    const input = document.createElement("input");
-    input.setAttribute("type", "checkbox");
-    input.setAttribute("name", "is-done");
-    input.setAttribute("id", `checkbox-${todo.id}`);
-
-    if (todo.isDone) {
-      input.setAttribute("checked", "");
-    }
-
-    input.addEventListener("change", () => {
-      todo.isDone = input.checked;
-      saveTodoItems();
-      renderTodos();
-    });
-
-    const label = document.createElement("label");
-    label.setAttribute("for", `checkbox-${todo.id}`);
-    label.textContent = todo.description;
-
-    if (todo.isDone) {
-      label.style.textDecoration = "line-through";
-    }
-
-    li.append(input, label);
-
-    todoList.append(li);
+// Get/load Todos from local storage
+function getTodosFromLocalStorage() {
+  if (localStorage.getItem("todos")) {
+    state.todos = JSON.parse(localStorage.getItem("tasks"));
   }
 }
 
-// Event Listener
-addForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+// Create Todo Item Template
+function generateTodoItemTemplate(todo) {
+  const li = document.createElement("li");
+  li.classList.add("todo-item");
 
-  saveTodoItems();
-  renderTodos();
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+
+  const label = document.createElement("label");
+  label.innerText = todo.description;
+
+  li.append(label, checkbox);
+
+  return li;
+}
+
+// Render Todos
+function render() {
+  todoList.innerHTML = "";
+
+  for (const todo of state.todos) {
+    const newTodoItem = generateTodoItemTemplate(todo);
+    todoList.appendChild(newTodoItem);
+  }
+}
+
+// Function to initialize
+function initialize() {
+  getTodosFromLocalStorage();
+  render();
+}
+
+// Add Todos to the List
+function addTodo() {
+  const newTodoText = inputTodo.value.trim().toLowerCase();
+
+  // Duplicate check
+  if (todos.some((todo) => todo.description.toLowerCase() === newTodoText)) {
+    alert("Task is already registered!");
+    return;
+  } else {
+    state.todos.push(newTodoText);
+  }
+
+  initialize();
+
+  inputTodo.value = "";
+}
+
+addForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  addTodo();
 });
 
-// // Save Todos / update local storage
+// Event listener for filter buttons
+filterSection.addEventListener("click", function (event) {
+  if (event.target.type === "radio") {
+    render();
+  }
+});
+
+// Event listener for checkbox changes
+todoList.addEventListener("change", function (e) {
+  const checkbox = e.target;
+  const li = checkbox.parentElement;
+  const todoId = parseInt(li.dataset.id);
+
+  // Update the state when the checkbox is changed
+  todos = todos.map((todo) =>
+    todo.id === todoId ? { ...todo, done: checkbox.checked } : todo
+  );
+
+  // Update local storage and render todos
+  initialize();
+});
+
+// Remove done todos
+remove.addEventListener("click", function () {
+  todos = todos.filter((todo) => !todo.done);
+
+  // Update local storage and render todos
+  initialize();
+});
+
+// Filter Todos
+function filterTodos() {
+  const selectedFilter = document.querySelector(
+    'input[name="filter"]:checked'
+  ).value;
+
+  for (const todo of todos) {
+    if (
+      (selectedFilter === "done" && todo.done) ||
+      (selectedFilter === "open" && !todo.done) ||
+      selectedFilter === "all"
+    ) {
+      render();
+    }
+  }
+}
+
+initialize();
+
+// // Load state from local storage
+
+// let todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+// // Add a default todo to the app state and save in local Storage
+// if (todos.length === 0) {
+//   todos.push({
+//     id: 0,
+//     description: "Set your priorities!",
+//     done: false,
+//   });
+//   localStorage.setItem("todos", JSON.stringify(todos));
+// }
+
+// // Function to save/update local storage
 // function updateLocalStorage() {
 //   localStorage.setItem("todos", JSON.stringify(todos));
 // }
 
-// // Load Todos / state from local storage
-// let todos = JSON.parse(localStorage.getItem("todos")) || [];
-
-// // Add a default todo to the app state
-// if (todos.length >= 0) {
-//   todos.push({ id: 0, description: "Set your priority!", done: false });
-// }
-
-// // Event listener for filter buttons
-// filterSection.addEventListener("click", function () {
-//   let currentFilter = "open";
-//   const filteredTodos = todos.filter((todo) => {
-//     if (currentFilter === "done") {
-//       return todo.done;
-//     }
-
-//     if (currentFilter === "open") {
-//       return !todo.done;
-//     }
-
-//     return true;
-//   });
-//   {
-//     renderTodos();
-//   }
-// });
-
 // // Function to render todos
 // function renderTodos() {
+//   const selectedFilter = document.querySelector(
+//     'input[name="filter"]:checked'
+//   ).value;
+
 //   todoList.innerHTML = "";
 
 //   for (const todo of todos) {
-//     const li = document.createElement("li");
+//     if (
+//       (selectedFilter === "done" && todo.done) ||
+//       (selectedFilter === "open" && !todo.done) ||
+//       selectedFilter === "all"
+//     ) {
+//       const newTodoLi = document.createElement("li");
+//       newTodoLi.dataset.id = todo.id;
+//       newTodoLi.innerText = todo.description;
 
-//     const input = document.createElement("input");
-//     input.setAttribute("type", "checkbox");
-//     input.setAttribute("name", "is-done");
-//     input.setAttribute("id", `checkbox-${todo.id}`);
+//       const checkBox = document.createElement("input");
+//       checkBox.setAttribute("type", "checkbox");
+//       checkBox.checked = todo.done;
+//       newTodoLi.appendChild(checkBox);
 
-//     if (todo.done) {
-//       input.setAttribute("checked", "");
+//       if (todo.done) {
+//         newTodoLi.style.textDecoration = "line-through";
+//       }
+
+//       todoList.appendChild(newTodoLi);
 //     }
-
-//     input.addEventListener("change", () => {
-//       todo.done = input.checked;
-
-//       updateLocalStorage();
-//       renderTodos();
-//     });
-
-//     const label = document.createElement("label");
-//     label.setAttribute("for", `checkbox-${todo.id}`);
-//     label.textContent = todo.description;
-
-//     if (todo.done) {
-//       label.style.textDecoration = "line-through";
-//     }
-
-//     li.append(label, input);
-
-//     todoList.append(li);
 //   }
 // }
 
-// // Initial render
-// renderTodos();
+// // Add Todos to the List
+// function addTodo() {
+//   const newTodoText = inputTodo.value.trim().toLowerCase();
+
+//   // Duplicate check
+//   if (todos.some((todo) => todo.description.toLowerCase() === newTodoText)) {
+//     alert("Duplicate todo!");
+//     return;
+//   }
+
+//   // Generate unique ID
+//   const newTodoId = todos.length > 0 ? todos[todos.length - 1].id + 1 : 1;
+
+//   const newTodo = { id: newTodoId, description: newTodoText, done: false };
+//   todos.push(newTodo);
+
+//   // Update local storage and render todos
+//   updateLocalStorage();
+//   renderTodos();
+
+//   inputTodo.value = "";
+// }
+
+// // Eventlistener for add Todos
+// addForm.addEventListener("submit", function (event) {
+//   event.preventDefault();
+//   addTodo();
+// });
+
+// // Event listener for filter buttons
+// filterSection.addEventListener("click", function (event) {
+//   if (event.target.type === "radio") {
+//     renderTodos();
+//   }
+// });
