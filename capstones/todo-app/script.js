@@ -50,11 +50,11 @@ function addTodo() {
 
   // Duplicate check
   if (todos.some((todo) => todo.description.toLowerCase() === newTodoText)) {
-    alert("Duplicate todo!");
+    alert("Todo already exists! \uD83D\uDE00");
     return;
   }
 
-  if (newTodoText.length < 3) {
+  if (newTodoText.length < 2) {
     return;
   }
 
