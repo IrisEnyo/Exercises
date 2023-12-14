@@ -50,7 +50,10 @@ function addTodo() {
 
   // Duplicate check
   if (todos.some((todo) => todo.description.toLowerCase() === newTodoText)) {
-    alert("Todo already exists! \uD83D\uDE00");
+    swal({
+      title: "Todo already exists! \uD83D\uDE00",
+      icon: "success",
+    });
     return;
   }
 
