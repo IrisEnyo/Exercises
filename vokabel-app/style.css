@@ -1,0 +1,12 @@
+.page-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  /* width: 50%; */
+}
+
+.mdl-button {
+  margin-left: 2rem;
+}
