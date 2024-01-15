@@ -91,23 +91,6 @@ function render() {
 );")
 and 1 new contact shall be reloaded */
 
-// document.querySelector("#next-btn").addEventListener("click", () => {
-//   if (state.nextItems) {
-//     getPokemonData(state.nextItems);
-//   }
-// });
-
-// document.querySelector("#limit").addEventListener("change", init);
-
-// console.log(3);
-// function init() {
-//   document.querySelector(".list").innerHTML = "";
-//   state.limit = document.querySelector("#limit").value;
-//   getPokemonData("https://pokeapi.co/api/v2/pokemon/?limit=" + state.limit);
-// }
-
-// init();
-
 getContactData();
 
 render();
