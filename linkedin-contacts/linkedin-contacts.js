@@ -1,52 +1,74 @@
-// const buttonGetContact = document.querySelector("#getContact");
-// const list = document.querySelector("ul");
-// const buttonRemoveContact = document.querySelector("#removeContact");
-
-// function getContact() {
-//   fetch("https://dummy-apis.netlify.app/api/contact-suggestions?count=1")
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((data) => {
-//       const img = document.createElement("img");
-//       img.src = data[0].picture;
-
-//       list.append(document.createTextNode(data[0].name.first));
-//       list.append(document.createTextNode(data[0].name.last));
-//       list.append(document.createTextNode(data[0].title));
-//       list.append(img);
-
-//       console.log(data);
-//     });
-// }
-
-// buttonRemoveContact.addEventListener("click", () => {
-//   list.innerHTML = "";
-// });
-
-// buttonGetContact.addEventListener("click", () => {
-//   list.innerHTML = "";
-
-//   getContact();
-// });
-//================================================================================================================================================================//
-
 const state = {
-  contactData: {
-    title: "",
-    first: "",
-    last: "",
-    picture: "",
-    jobTitle: "",
-    mutualConnections: "",
-    backgroundImage: "",
-  },
-  nextContact: null,
+  cards: 8,
   limit: 1,
 };
 
+const body = document.querySelector("body");
+const articleContainer = document.querySelector("article");
+
+function cardTemplate(user) {
+  const article = document.createElement("article");
+  const backgroundImage = document.createElement("div");
+  const img = document.createElement("img");
+  const removeButton = document.createElement("button");
+  const h1 = document.createElement("h1");
+  const nameTitle = document.createElement("span");
+  const nameFirst = document.createElement("span");
+  const nameLast = document.createElement("span");
+  const jobTitle = document.createElement("p");
+  const mutualConnections = document.createElement("p");
+  const connectButton = document.createElement("button");
+  backgroundImage.classList.add("backgroundImage");
+  backgroundImage.setAttribute(
+    "style",
+    `background: url('${user.backgroundImage}')`
+  );
+  img.classList.add("picture");
+  img.setAttribute("src", user.picture);
+  img.setAttribute(
+    "alt",
+    `${user.name.title}
+    ${user.name.first}
+    ${user.name.last}`
+  );
+  removeButton.classList.add("removeButton");
+  removeButton.type = "button";
+  removeButton.textContent = "X";
+  h1.classList.add("salutation");
+  nameTitle.classList.add("nameTitel");
+  nameTitle.textContent = `${user.name.title}`;
+  nameFirst.classList.add("nameFirst");
+  nameFirst.textContent = `${user.name.first}`;
+  nameLast.classList.add("nameLast");
+  nameLast.textContent = `${user.name.last}`;
+  jobTitle.classList.add("jobTitle");
+  jobTitle.textContent = `${user.title}`;
+  mutualConnections.classList.add("mutualConnections");
+  mutualConnections.textContent =
+    `${user.mutualConnections}` + " mutual connections";
+  connectButton.classList.add("connectButton");
+  connectButton.type = "button";
+  connectButton.textContent = "Connect";
+
+  body.append(article);
+  article.append(
+    backgroundImage,
+    img,
+    removeButton,
+    h1,
+    jobTitle,
+    mutualConnections,
+    connectButton
+  );
+  h1.append(nameTitle, nameFirst, nameLast);
+
+  return { article, removeButton, connectButton };
+}
+
 function getContactData() {
-  fetch("https://dummy-apis.netlify.app/api/contact-suggestions?count=8")
+  fetch(
+    `https://dummy-apis.netlify.app/api/contact-suggestions?count=${state.cards}`
+  )
     .then((response) => {
       if (response.ok) {
         return response.json();
@@ -55,42 +77,45 @@ function getContactData() {
     .then((data) => {
       console.log(data);
 
-      for (let i = 0; i < 8; i++) {
-        state.contactData.first = data[i].name.first;
-        state.contactData.last = data[i].name.last;
-        state.contactData.title = data[i].name.title;
-        state.contactData.picture = data[i].picture;
-        state.contactData.jobTitle = data[i].title;
-        state.contactData.mutualConnections =
-          data[i].mutualConnections + " mutual connections";
-        state.contactData.backgroundImage = data[i].backgroundImage;
-        render();
+      if (data.length > 0) {
+        for (const user of data) {
+          const { article } = cardTemplate(user);
+          body.append(article);
+        }
       }
     });
 }
 
-function render() {
-  const body = document.querySelector("body");
-  const img = document.createElement("img");
-  img.src = state.contactData.picture;
-
-  body.append(img);
-  body.append(document.createTextNode(state.contactData.title));
-  body.append(document.createTextNode(state.contactData.first));
-  body.append(document.createTextNode(state.contactData.last));
-  body.append(document.createTextNode(state.contactData.jobTitle));
-  body.append(document.createTextNode(state.contactData.mutualConnections));
+function getOneContactData() {
+  fetch(
+    `https://dummy-apis.netlify.app/api/contact-suggestions?count=${state.limit}`
+  )
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then((data) => {
+      if (data.length > 0) {
+        for (const user of data) {
+          const { article } = cardTemplate(user);
+          body.append(article);
+        }
+      }
+    });
 }
 
-/* Next: remove-button shall remove the spezific contact where the event(click) was happend (maybe with the "hidden" property, i.e.: 
-"document.getElementById("okButton").addEventListener("click", () => {
-    document.getElementById("welcome").hidden = true;
-    document.getElementById("awesome").hidden = false;
-  },
-  false,
-);")
-and 1 new contact shall be reloaded */
+body.addEventListener("click", (event) => {
+  const closeBtn = event.target.closest(".removeButton");
+  if (closeBtn) {
+    const closeCard = closeBtn.closest("article");
+    closeCard.remove();
+    getOneContactData();
+  }
+});
 
-getContactData();
+function init() {
+  getContactData();
+}
 
-render();
+init();
