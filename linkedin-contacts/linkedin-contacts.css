@@ -50,20 +50,19 @@ section {
   align-content: space-evenly;
 
   @media screen and (max-width: 992px) {
+    margin: 0.5rem;
     grid-template-columns: 1fr 1fr;
   }
 
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    margin: auto;
-    width: 60%;
+    margin: 0.5rem;
   }
 
   @media screen and (max-width: 460px) {
     display: flex;
     flex-direction: column;
-    width: 100%;
   }
 }
 
@@ -78,6 +77,16 @@ article {
   border-radius: 0.5rem;
   margin: 1rem;
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    margin: auto;
+    margin-top: 0.5rem;
+    width: 60%;
+  }
+
+  @media screen and (max-width: 460px) {
+    width: 100%;
+  }
 }
 
 img {
