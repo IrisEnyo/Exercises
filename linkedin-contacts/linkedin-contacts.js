@@ -4,7 +4,7 @@ const state = {
 };
 
 const body = document.querySelector("body");
-const articleContainer = document.querySelector("article");
+const section = document.querySelector("section");
 
 function cardTemplate(user) {
   const article = document.createElement("article");
@@ -18,11 +18,20 @@ function cardTemplate(user) {
   const jobTitle = document.createElement("p");
   const mutualConnections = document.createElement("p");
   const connectButton = document.createElement("button");
+
   backgroundImage.classList.add("backgroundImage");
   backgroundImage.setAttribute(
     "style",
     `background: url('${user.backgroundImage}')`
   );
+
+  if (user.backgroundImage === "") {
+    backgroundImage.setAttribute(
+      "style",
+      `background: url("https://i.stack.imgur.com/OpeH1.png")`
+    );
+  }
+
   img.classList.add("picture");
   img.setAttribute("src", user.picture);
   img.setAttribute(
@@ -50,7 +59,7 @@ function cardTemplate(user) {
   connectButton.type = "button";
   connectButton.textContent = "Connect";
 
-  body.append(article);
+  section.append(article);
   article.append(
     backgroundImage,
     img,
@@ -62,7 +71,7 @@ function cardTemplate(user) {
   );
   h1.append(nameTitle, nameFirst, nameLast);
 
-  return { article, removeButton, connectButton };
+  return { section, removeButton, connectButton };
 }
 
 function getContactData() {
@@ -79,8 +88,8 @@ function getContactData() {
 
       if (data.length > 0) {
         for (const user of data) {
-          const { article } = cardTemplate(user);
-          body.append(article);
+          const { section } = cardTemplate(user);
+          body.append(section);
         }
       }
     });
@@ -98,8 +107,8 @@ function getOneContactData() {
     .then((data) => {
       if (data.length > 0) {
         for (const user of data) {
-          const { article } = cardTemplate(user);
-          body.append(article);
+          const { section } = cardTemplate(user);
+          body.append(section);
         }
       }
     });
@@ -113,6 +122,8 @@ body.addEventListener("click", (event) => {
     getOneContactData();
   }
 });
+
+const invitationCount = document.getElementsByClassName("invitationCount");
 
 function init() {
   getContactData();
