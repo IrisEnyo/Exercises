@@ -1,3 +1,4 @@
+//den fetch in den state packen und dann rendern!
 const state = {
   cards: 8,
   limit: 1,
@@ -29,6 +30,7 @@ function cardTemplate(user) {
     backgroundImage.setAttribute(
       "style",
       `background: url("https://i.stack.imgur.com/OpeH1.png")`
+      //math.random() einbauen um unterschiedliche Bilder zu bekommen (querySelector das mit ? u.s.w.)
     );
   }
 

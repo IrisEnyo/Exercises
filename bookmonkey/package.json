@@ -1,0 +1,14 @@
+{
+  "name": "bookmonkey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "book.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bookmonkey-api": "^3.1.3"
+  }
+}
