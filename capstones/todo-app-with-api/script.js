@@ -76,6 +76,9 @@ function handleAddTodo(event) {
   event.preventDefault();
   const newTodoText = inputTodo.value.trim().toLowerCase();
 
+  if (newTodoText.lenght <= 2) {
+    return;}
+
   if (todos.some((todo) => todo.description.toLowerCase() === newTodoText)) {
     swal({
       title: "Todo already exists! \uD83D\uDE00",
