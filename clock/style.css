@@ -1,0 +1,93 @@
+/*========== generel styling ==========*/
+*,
+::after,
+::before,
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+/*========== spezific styling ==========*/
+
+body {
+  background-color: rgb(255, 225, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/*analog clock*/
+.clock {
+  border: 0.23rem solid black;
+  border-radius: 50%;
+  background-color: white;
+  width: 40vmin;
+  height: 40vmin;
+  box-shadow: 0.2rem 0.2rem 0.5rem;
+
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clock {
+  position: relative;
+  width: 40vmin;
+  height: 40vmin;
+  background-color: snow;
+  border: 3px solid black;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 5px #333;
+}
+
+.clock > * {
+  position: absolute;
+  border-radius: 2px;
+  background-color: black;
+}
+
+.clock-hours {
+  width: 5px;
+  height: 25%;
+  transform: rotate(var(--hours, 95deg)) translateY(-50%);
+}
+
+.clock-minutes {
+  width: 5px;
+  height: 48%;
+  transform: rotate(var(--minutes, 135deg)) translateY(-50%);
+}
+
+.clock-seconds {
+  width: 2px;
+  height: 48%;
+  transform: rotate(var(--seconds, 30deg)) translateY(-50%);
+}
+
+.clock-circle {
+  width: 5%;
+  height: 5%;
+  background-color: black;
+  border-radius: 50%;
+}
+
+/*digital clock*/
+.dots {
+  margin-top: 1rem;
+  display: flex;
+  align-items: baseline;
+}
+
+.dots-hidden {
+  visibility: hidden;
+}

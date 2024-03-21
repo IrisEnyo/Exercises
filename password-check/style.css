@@ -1,0 +1,37 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: lightsalmon;
+  font-family: open sans;
+}
+
+h1 {
+  font-family: lobster;
+  color: white;
+  text-shadow: 2px 1px 1px black;
+  text-align: center;
+}
+
+input,
+button {
+  border: solid black;
+  border-radius: 2px;
+}
+
+button {
+  background-color: black;
+  color: white;
+  width: 11.6rem;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}

@@ -8,6 +8,12 @@
   padding: 0;
 }
 
+:root {
+  --background-color: rgb(234, 233, 233);
+  --color: grey;
+  --white: white;
+}
+
 /* --------------------Spezific Styling------------------- */
 
 /* body */
@@ -17,9 +23,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  --background-color: rgb(234, 233, 233);
-  --color: grey;
-  --white: white;
+  background-color: var(--background-color);
 }
 
 @media screen and (min-width: 650px) {
@@ -92,7 +96,7 @@ body > article {
   position: absolute;
   color: var(--color);
   font-size: 0.6rem;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
   bottom: 2rem;
 }
 
@@ -101,14 +105,14 @@ body > article {
 .main-asics,
 .main-adidas,
 .main-new-balance {
-  margin: 0.5rem;
+  margin: 1rem;
   padding-bottom: 1rem;
 }
 
 .main-h1-asics,
 .main-h1-adidas,
 .main-h1-new-balance {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 1rem 0;
 }
 
@@ -129,6 +133,7 @@ body > article {
   display: flow-root;
   position: relative;
   padding: 1rem;
+  margin: 1rem;
 }
 
 .prize-asics,
@@ -253,3 +258,5 @@ body > article {
   padding: 0.5rem;
   border-radius: 0.3rem;
 }
+
+/* --------------- END --------------- */

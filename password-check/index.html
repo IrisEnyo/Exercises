@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Check</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/normalize.css@8.0.1/normalize.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&family=Playfair+Display&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&family=Playfair+Display&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Password Check</h1>
+
+    <section class="input">
+      <input class="input" type="password" name="password" id="password-1" />
+      <input class="input" type="password" name="password" id="password-2" />
+      <button id="toggleButton">Show Passwords</button>
+    </section>
+
+    <section class="requirements"></section>
+    <p>Passwords are equal <span>X</span></p>
+    <p>Lower Case Letters <span>X</span></p>
+    <p>Upper Case Letters <span>X</span></p>
+    <p>Contains Numbers <span>X</span></p>
+    <p>At least 10 characters long <span>X</span></p>
+
+    <script src="script.js"></script>
+  </body>
+</html>
