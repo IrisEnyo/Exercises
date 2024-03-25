@@ -20,7 +20,7 @@
 <script>
 export default {
   checked: false,
-  name: "TodoHeader",
+  name: "TodoFilter",
   id: "all",
 
   // computed: {

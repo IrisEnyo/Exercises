@@ -1,7 +1,7 @@
 <template>
-  <ul>
-    <TodoListItem />
-  </ul>
+  <ol>
+    <TodoListItem v-for="todo of items" :key="todo.id" :todo="todo" />
+  </ol>
 </template>
 
 <script>
@@ -12,6 +12,15 @@ export default {
 
   components: {
     TodoListItem,
+  },
+
+  props: {
+    items: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
   },
 };
 </script>
