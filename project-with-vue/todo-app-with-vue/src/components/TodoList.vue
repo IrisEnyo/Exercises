@@ -1,6 +1,11 @@
 <template>
   <ol>
-    <TodoListItem v-for="todo of items" :key="todo.id" :todo="todo" />
+    <TodoListItem
+      v-for="todo in items"
+      :key="todo.id"
+      :todo="todo"
+      @updateDoneTodo="updateTodo"
+    />
   </ol>
 </template>
 
@@ -9,6 +14,7 @@ import TodoListItem from "@/components/TodoListItem.vue";
 
 export default {
   name: "TodoList",
+  emits: ["updateDoneTodo"],
 
   components: {
     TodoListItem,
@@ -20,6 +26,12 @@ export default {
       default() {
         return [];
       },
+    },
+  },
+
+  methods: {
+    updateTodo(clickedTodo) {
+      this.$emit("updateDoneTodo", clickedTodo);
     },
   },
 };

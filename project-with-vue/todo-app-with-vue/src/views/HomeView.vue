@@ -1,8 +1,8 @@
 <template>
   <TodoFilter />
-  <DeleteButton />
+  <DeleteButton :items="todos" @deleteDoneTodo="deleteTodo" />
   <InputNewTodo @addTodo="addNewTodo" />
-  <TodoList :items="todos" />
+  <TodoList :items="todos" @updateDoneTodo="updateTodo" />
 </template>
 
 <script>
@@ -56,6 +56,44 @@ export default {
       const newApiTodo = await response.json();
       this.todos.push(newApiTodo);
       console.log(this.todos);
+    },
+
+    async updateTodo(clickedTodo) {
+      const updatedTodo = {
+        description: clickedTodo.description,
+        done: (clickedTodo.done = !clickedTodo.done),
+        id: clickedTodo.id,
+      };
+
+      const response = await fetch(
+        "http://localhost:4730/todos/" + updatedTodo.id,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(updatedTodo),
+        }
+      );
+      const newUpdatedTodo = await response.json();
+      console.log(newUpdatedTodo);
+
+      return newUpdatedTodo;
+    },
+
+    async deleteTodo(doneTodo) {
+      if (doneTodo === 0) {
+        return;
+      }
+
+      await Promise.all(
+        doneTodo.map(async (id) => {
+          await fetch(`http://localhost:4730/todos/${id}`, {
+            method: "DELETE",
+          });
+        })
+      );
+      this.todos = this.todos.filter((todo) => !todo.done);
     },
   },
 };
