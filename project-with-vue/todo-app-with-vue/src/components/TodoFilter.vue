@@ -8,6 +8,7 @@
         value="all"
         checked
         v-model="filter"
+        @change="filterTodos"
       />All
     </label>
 
@@ -18,6 +19,7 @@
         id="open"
         value="open"
         v-model="filter"
+        @change="filterTodos"
       />Open
     </label>
 
@@ -28,6 +30,7 @@
         id="done"
         value="done"
         v-model="filter"
+        @change="filterTodos"
       />Done
     </label>
   </section>
@@ -43,29 +46,20 @@ export default {
     };
   },
 
-  // props: {
-  //   items: {
-  //     type: Array,
-  //     default() {
-  //       return [];
-  //     },
-  //   },
-  // },
+  methods: {
+    filterTodos() {
+      console.log(this.filter);
 
-  // methods: {
-  //   filterDoneTodos() {
-  //     console.log(this.items, this.filter);
-
-  //     if (this.filter === "all") {
-  //       return this.items;
-  //     } else if (this.filter === "open") {
-  //       return this.items.filter((item) => !item.done);
-  //     } else if (this.filter === "done") {
-  //       return this.items.filter((item) => item.done);
-  //     }
-  //     return this.items;
-  //   },
-  // },
+      // if (this.filter === "all") {
+      //   return this.items;
+      // } else if (this.filter === "open") {
+      //   return this.items.filter((item) => !item.done);
+      // } else if (this.filter === "done") {
+      //   return this.items.filter((item) => item.done);
+      // }
+      // return console.log(this.items);
+    },
+  },
 };
 </script>
 

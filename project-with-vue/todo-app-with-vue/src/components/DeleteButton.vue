@@ -1,8 +1,5 @@
 <template>
-  <button @click="deleteTodo">
-    Delete done Todos
-    {{ console.log(items) }}
-  </button>
+  <button @click="deleteTodo">Delete done Todos</button>
 </template>
 
 <script>
